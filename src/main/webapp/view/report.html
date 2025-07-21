@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en" class="theme-fs-sm" data-bs-theme="light" data-bs-theme-color="default" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title data-setting="app_name" data-rightJoin=" Clinic And Patient Management Dashboard">KiviCare  Clinic And Patient Management Dashboard</title>
+    <meta name="description" content="KiviCare is a revolutionary Bootstrap Admin Dashboard Template and UI Components Library. The Admin Dashboard Template and UI Component features 8 modules.">
+    <meta name="keywords" content="premium, admin, dashboard, template, bootstrap 5, clean ui, Kivicare, admin dashboard,responsive dashboard, optimized dashboard,">
+    <meta name="author" content="Iqonic Design">
+    <meta name="DC.title" content="KiviCare Clinic And Patient Management Dashboard">
+    <!-- Config Options -->
+    <meta name="setting_options" content='{&quot;saveLocal&quot;:&quot;sessionStorage&quot;,&quot;storeKey&quot;:&quot;kivicare&quot;,&quot;setting&quot;:{&quot;app_name&quot;:{&quot;value&quot;:&quot;KiviCare&quot;},&quot;theme_scheme_direction&quot;:{&quot;value&quot;:&quot;ltr&quot;},&quot;theme_scheme&quot;:{&quot;value&quot;:&quot;light&quot;},&quot;theme_style_appearance&quot;:{&quot;value&quot;:[&quot;theme-default&quot;]},&quot;theme_color&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;theme_transition&quot;:{&quot;value&quot;:&quot;theme-with-animation&quot;},&quot;theme_font_size&quot;:{&quot;value&quot;:&quot;theme-fs-sm&quot;},&quot;page_layout&quot;:{&quot;value&quot;:&quot;container-fluid&quot;},&quot;header_navbar&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;header_banner&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;sidebar_color&quot;:{&quot;value&quot;:&quot;sidebar-white&quot;},&quot;card_color&quot;:{&quot;value&quot;:&quot;card-default&quot;},&quot;sidebar_type&quot;:{&quot;value&quot;:[]},&quot;sidebar_menu_style&quot;:{&quot;value&quot;:&quot;text-hover&quot;},&quot;footer&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;body_font_family&quot;:{&quot;value&quot;:null},&quot;heading_font_family&quot;:{&quot;value&quot;:null}}}'>
+    <!-- Google Font Api KEY-->
+    <meta name="google_font_api" content="AIzaSyBG58yNdAjc20_8jAvLNSVi9E4Xhwjau_k">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/assets/images/favicon.ico" />
+    
+    <!-- Library / Plugin Css Build -->
+    <link rel="stylesheet" href="../assets/assets/css/core/libs.min.css" />
+    
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="../assets/assets/vendor/flaticon/css/flaticon.css" />
+    
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="../assets/assets/vendor/font-awesome/css/all.min.css" />
+    
+    <!-- Flatpickr css -->
+    <link rel="stylesheet" href="../assets/assets/vendor/flatpickr/dist/flatpickr.min.css" />
+    
+    <link rel="stylesheet" href="../assets/assets/vendor/sheperd/dist/css/sheperd.css">
+
+    <!-- Sweetlaert2 css -->
+    <link rel="stylesheet" href="../assets/assets/vendor/sweetalert2/dist/sweetalert2.min.css"/>
+
+    <!-- Kivicare Design System Css -->
+    <link rel="stylesheet" href="../assets/assets/css/kivicare.min.css?v=1.4.1" />
+    
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="../assets/assets/css/custom.min.css?v=1.4.1" />
+
+    <!-- RTL Css -->
+    <link rel="stylesheet" href="../assets/assets/css/rtl.min.css?v=1.4.1"/>
+
+    <!-- Customizer Css -->
+    <link rel="stylesheet" href="../assets/assets/css/customizer.min.css?v=1.4.1"/>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        .stats-card {
+            transition: transform 0.2s ease-in-out;
+            border: none;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 2rem;
+        }
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .filter-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .metric-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .critical { background-color: #dc3545; color: white; }
+        .low { background-color: #ffc107; color: black; }
+        .moderate { background-color: #17a2b8; color: white; }
+        .good { background-color: #28a745; color: white; }
+        .expiring-soon { background-color: #fd7e14; color: white; }
+        .monitor { background-color: #6c757d; color: white; }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 9999;
+            display: none;
+        }
+        
+        .export-buttons {
+            gap: 10px;
+        }
+        
+        .department-card {
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body class="  ">
+<!-- loader Start -->
+<div id="loading">
+    <div class="loader simple-loader">
+        <div class="loader-body">
+            <img src="../assets/assets/images/loader.gif" alt="loader" class="light-loader img-fluid " width="200">
+        </div>
+    </div>        </div>
+<!-- loader END -->
+
+    <aside class="sidebar sidebar-base " id="first-tour" data-toggle="main-sidebar" data-sidebar="responsive">
+        <div class="sidebar-header d-flex align-items-center justify-content-start position-relative">
+        <a href="./index.html" class="navbar-brand">
+
+            <!--Logo start-->
+                <div class="logo-main">
+                <img href="./home-adminbusiness.html" class="logo-normal img-fluid" src="../assets/assets/images/logo.png" height="30" alt="logo">
+                <img class="logo-normal dark-normal img-fluid" src="../assets/assets/images/logo-dark.png" height="30" alt="logo">
+                <img class="logo-normal white-normal img-fluid" src="../assets/assets/images/logo-white.png" height="30" alt="logo">
+                <img class="logo-mini img-fluid" src="../assets/assets/images/logo-mini.png" height="30" alt="logo">
+                <img class="logo-mini dark-mini img-fluid" src="../assets/assets/images/logo-mini-dark.png" height="30" alt="logo">
+                <img class="logo-mini white-mini img-fluid" src="../assets/assets/images/logo-mini-white.png" height="30" alt="logo">
+                </div>
+            <!--logo End-->        </a>
+            <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
+                <i class="icon">               
+                    <svg class="icon-20 icon-arrow" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.5 19L8.5 12L15.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>                            
+                </i>
+            </div>
+        </div>
+        <div class="sidebar-body pt-0 data-scrollbar">
+            <div class="sidebar-list">
+            <!-- Sidebar Menu Start -->
+                <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
+                <li class="nav-item static-item">
+                    <a class="nav-link static-item disabled text-start" href="#" tabindex="-1">
+                        <span class="default-icon">Home</span>
+                        <span class="mini-icon" data-bs-toggle="tooltip" title="Home" data-bs-placement="right">-</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page"
+                       href="./appointment.html">
+                        <i class="icon" data-bs-toggle="tooltip" title="Appointment" data-bs-placement="right">
+                            <svg width="20" class="icon-20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M3 16.87V9.25699H21V16.931C21 20.07 19.0241 22 15.8628 22H8.12733C4.99561 22 3 20.03 3 16.87ZM7.95938 14.41C7.50494 14.431 7.12953 14.07 7.10977 13.611C7.10977 13.151 7.46542 12.771 7.91987 12.75C8.36443 12.75 8.72997 13.101 8.73985 13.55C8.7596 14.011 8.40395 14.391 7.95938 14.41ZM12.0198 14.41C11.5653 14.431 11.1899 14.07 11.1701 13.611C11.1701 13.151 11.5258 12.771 11.9802 12.75C12.4248 12.75 12.7903 13.101 12.8002 13.55C12.82 14.011 12.4643 14.391 12.0198 14.41ZM16.0505 18.09C15.596 18.08 15.2305 17.7 15.2305 17.24C15.2206 16.78 15.5862 16.401 16.0406 16.391H16.0505C16.5148 16.391 16.8902 16.771 16.8902 17.24C16.8902 17.71 16.5148 18.09 16.0505 18.09ZM11.1701 17.24C11.1899 17.7 11.5653 18.061 12.0198 18.04C12.4643 18.021 12.82 17.641 12.8002 17.181C12.7903 16.731 12.4248 16.38 11.9802 16.38C11.5258 16.401 11.1701 16.78 11.1701 17.24ZM7.09989 17.24C7.11965 17.7 7.49506 18.061 7.94951 18.04C8.39407 18.021 8.74973 17.641 8.72997 17.181C8.72009 16.731 8.35456 16.38 7.90999 16.38C7.45554 16.401 7.09989 16.78 7.09989 17.24ZM15.2404 13.601C15.2404 13.141 15.596 12.771 16.0505 12.761C16.4951 12.761 16.8507 13.12 16.8705 13.561C16.8804 14.021 16.5247 14.401 16.0801 14.41C15.6257 14.42 15.2503 14.07 15.2404 13.611V13.601Z"
+                                      fill="currentColor" />
+                                <path opacity="0.4"
+                                      d="M3.00336 9.2569C3.0162 8.6699 3.0656 7.5049 3.15846 7.1299C3.63267 5.0209 5.24298 3.6809 7.54485 3.4899H16.4559C18.738 3.6909 20.3681 5.0399 20.8423 7.1299C20.9342 7.4949 20.9836 8.6689 20.9964 9.2569H3.00336Z"
+                                      fill="currentColor" />
+                                <path
+                                        d="M8.30486 6.59C8.73955 6.59 9.06556 6.261 9.06556 5.82V2.771C9.06556 2.33 8.73955 2 8.30486 2C7.87017 2 7.54416 2.33 7.54416 2.771V5.82C7.54416 6.261 7.87017 6.59 8.30486 6.59Z"
+                                        fill="currentColor" />
+                                <path
+                                        d="M15.6949 6.59C16.1197 6.59 16.4556 6.261 16.4556 5.82V2.771C16.4556 2.33 16.1197 2 15.6949 2C15.2603 2 14.9342 2.33 14.9342 2.771V5.82C14.9342 6.261 15.2603 6.59 15.6949 6.59Z"
+                                        fill="currentColor" />
+                            </svg>
+                        </i>
+                        <span class="item-name">Appointments</span>
+                    </a>
+                </li>
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"
+                       href="./report.html">
+                        <i class="icon" data-bs-toggle="tooltip" title="Report" data-bs-placement="right">
+                                <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.4"
+                                      d="M16.6756 2H7.33333C3.92889 2 2 3.92889 2 7.33333V16.6667C2 20.0711 3.92889 22 7.33333 22H16.6756C20.08 22 22 20.0711 22 16.6667V7.33333C22 3.92889 20.08 2 16.6756 2Z"
+                                      fill="currentColor"></path>
+                                <path
+                                        d="M7.36866 9.3689C6.91533 9.3689 6.54199 9.74223 6.54199 10.2045V17.0756C6.54199 17.5289 6.91533 17.9022 7.36866 17.9022C7.83088 17.9022 8.20421 17.5289 8.20421 17.0756V10.2045C8.20421 9.74223 7.83088 9.3689 7.36866 9.3689Z"
+                                        fill="currentColor"></path>
+                                <path
+                                        d="M12.0352 6.08887C11.5818 6.08887 11.2085 6.4622 11.2085 6.92442V17.0755C11.2085 17.5289 11.5818 17.9022 12.0352 17.9022C12.4974 17.9022 12.8707 17.5289 12.8707 17.0755V6.92442C12.8707 6.4622 12.4974 6.08887 12.0352 6.08887Z"
+                                        fill="currentColor"></path>
+                                <path
+                                        d="M16.6398 12.9956C16.1775 12.9956 15.8042 13.3689 15.8042 13.8312V17.0756C15.8042 17.5289 16.1775 17.9023 16.6309 17.9023C17.0931 17.9023 17.4664 17.5289 17.4664 17.0756V13.8312C17.4664 13.3689 17.0931 12.9956 16.6398 12.9956Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </i>
+                        <span class="item-name">Report</span>
+                    </a>
+                </li>
+                <li>
+                    <hr class="hr-horizontal">
+                </li>
+                <li class="nav-item static-item">
+                    <a class="nav-link static-item disabled text-start" href="#" tabindex="-1">
+                        <span class="default-icon">Pages</span>
+                        <span class="mini-icon">-</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link " aria-current="page"
+                        href="./services.html">
+                        <i class="icon" data-bs-toggle="tooltip" title="Services" data-bs-placement="right">
+                                <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M12 2C13.1046 2 14 2.89543 14 4V6H16C17.1046 6 18 6.89543 18 8V10C19.1046 10 20 10.8954 20 12V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V12C4 10.8954 4.89543 10 6 10V8C6 6.89543 6.89543 6 8 6H10V4C10 2.89543 10.8954 2 12 2ZM12 4V6H10V8H6V10H8V20H16V10H18V8H14V6H12V4Z"
+                                    fill="currentColor"></path>
+                                </svg>
+                            </i>
+                        <span class="item-name">Services</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link " aria-current="page"
+                       href="./payment.html">
+                        <i class="icon" data-bs-toggle="tooltip" title="Payment" data-bs-placement="right">
+                                <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M21.9964 8.37513H17.7618C15.7911 8.37859 14.1947 9.93514 14.1911 11.8566C14.1884 13.7823 15.7867 15.3458 17.7618 15.3484H22V15.6543C22 19.0136 19.9636 21 16.5173 21H7.48356C4.03644 21 2 19.0136 2 15.6543V8.33786C2 4.97862 4.03644 3 7.48356 3H16.5138C19.96 3 21.9964 4.97862 21.9964 8.33786V8.37513ZM6.73956 8.36733H12.3796H12.3831H12.3902C12.8124 8.36559 13.1538 8.03019 13.152 7.61765C13.1502 7.20598 12.8053 6.87318 12.3831 6.87491H6.73956C6.32 6.87664 5.97956 7.20858 5.97778 7.61852C5.976 8.03019 6.31733 8.36559 6.73956 8.36733Z"
+                                      fill="currentColor"></path>
+                                <path opacity="0.4"
+                                      d="M16.0374 12.2966C16.2465 13.2478 17.0805 13.917 18.0326 13.8996H21.2825C21.6787 13.8996 22 13.5715 22 13.166V10.6344C21.9991 10.2297 21.6787 9.90077 21.2825 9.8999H17.9561C16.8731 9.90338 15.9983 10.8024 16 11.9102C16 12.0398 16.0128 12.1695 16.0374 12.2966Z"
+                                      fill="currentColor"></path>
+                                <circle cx="18" cy="11.8999" r="1" fill="currentColor"></circle>
+                            </svg>
+                        </i>
+                        <span class="item-name">Payment</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Sidebar Menu End -->        </div>
+    </div>
+    <div class="sidebar-footer"></div>
+</aside>
+
+    <main class="main-content">
+    <div class="position-relative ">
+        <!--Nav Start-->
+        <nav class="nav navbar navbar-expand-xl navbar-light iq-navbar">
+            <div class="container-fluid navbar-inner">
+                <a href="./index.html" class="navbar-brand">
+
+                    <!--Logo start-->
+                    <div class="logo-main">
+                        <img class="logo-normal img-fluid" src="../assets/assets/images/logo.png" height="30" alt="logo">
+                        <img class="logo-normal dark-normal img-fluid" src="../assets/assets/images/logo-dark.png" height="30" alt="logo">
+                        <img class="logo-normal white-normal img-fluid" src="../assets/assets/images/logo-white.png" height="30" alt="logo">
+                        <img class="logo-mini img-fluid" src="../assets/assets/images/logo-mini.png" height="30" alt="logo">
+                        <img class="logo-mini dark-mini img-fluid" src="../assets/assets/images/logo-mini-dark.png" height="30" alt="logo">
+                        <img class="logo-mini white-mini img-fluid" src="../assets/assets/images/logo-mini-white.png" height="30" alt="logo">
+                    </div>
+                    <!--logo End-->      </a>
+                <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
+                    <i class="icon d-flex">
+                        <svg class="icon-20" width="20" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+                                </svg>
+                            </i>
+                </div>
+                <div class="d-flex align-items-center justify-content-between product-offcanvas">
+                    <div class="offcanvas offcanvas-end shadow-none iq-product-menu-responsive" tabindex="-1"
+                         id="offcanvasBottomNav">
+                        <div class="offcanvas-body">
+                            <ul class="iq-nav-menu list-unstyled">
+                                <li class="nav-item">
+                                    <a class="nav-link menu-arrow justify-content-start "
+                                       href="./index.html">
+                                        <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                                    <a class="nav-link menu-arrow justify-content-start "
+                                       href="./setting.html">
+                                        <span class="nav-text">Setting </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <button id="navbar-toggle" class="navbar-toggler px-0" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                                <span class="navbar-toggler-btn">
+                                   <span class="navbar-toggler-icon"></span>
+                                </span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
+                        <li class="nav-item dropdown me-0 me-xl-3">
+                            <div class="d-flex align-items-center mr-2 iq-font-style" role="group" aria-label="First group"
+                                 data-setting="radio">
+                                <input type="radio" class="btn-check" name="theme_font_size" value="theme-fs-sm" id="font-size-sm">
+                                <label for="font-size-sm" class="btn btn-border border-0 btn-icon btn-sm" data-bs-toggle="tooltip"
+                                       title="Font size 14px" data-bs-placement="bottom">
+                                    <span class="mb-0 h6" style="color: inherit !important;">A</span>
+                                </label>
+                                <input type="radio" class="btn-check" name="theme_font_size" value="theme-fs-md" id="font-size-md">
+                                <label for="font-size-md" class="btn btn-border border-0 btn-icon" data-bs-toggle="tooltip"
+                                       title="Font size 16px" data-bs-placement="bottom">
+                                    <span class="mb-0 h4" style="color: inherit !important;">A</span>
+                                </label>
+                                <input type="radio" class="btn-check" name="theme_font_size" value="theme-fs-lg" id="font-size-lg">
+                                <label for="font-size-lg" class="btn btn-border border-0 btn-icon" data-bs-toggle="tooltip"
+                                       title="Font size 18px" data-bs-placement="bottom">
+                                    <span class="mb-0 h1" style="color: inherit !important;">A</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown pe-3 d-none d-xl-block">
+                            <div class="form-group input-group mb-0 search-input">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-text">
+                                         <svg class="icon-20" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                              xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="11.7669" cy="11.7666" r="8.98856" stroke="currentColor" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round"></circle>
+                                            <path d="M18.0186 18.4851L21.5426 22" stroke="currentColor" stroke-width="1.5"
+                                                  stroke-linecap="round" stroke-linejoin="round"></path>
+                                         </svg>
+                                      </span>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown iq-responsive-menu d-block d-xl-none">
+                            <div class="btn btn-sm px-0 border-0" id="navbarDropdown-search-11" role="button"
+                                 data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="11.7669" cy="11.7666" r="8.98856" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></circle>
+                                    <path d="M18.0186 18.4851L21.5426 22" stroke="currentColor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown-search-11"
+                                style="width: 25rem;">
+                                <li class="px-3 py-0">
+                                    <div class="form-group input-group mb-0">
+                                        <input type="text" class="form-control" placeholder="Search...">
+                                        <span class="input-group-text">
+                                               <svg class="icon-20" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                  <circle cx="11.7669" cy="11.7666" r="8.98856" stroke="currentColor" stroke-width="1.5"
+                                                          stroke-linecap="round" stroke-linejoin="round"></circle>
+                                                  <path d="M18.0186 18.4851L21.5426 22" stroke="currentColor" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                               </svg>
+                                            </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" id="notification-drop" data-bs-toggle="dropdown">
+                                <div class="nav-list-icon">
+                                    <div class="btn-inner">
+                                        <svg class="icon-20" width="19" height="22" viewBox="0 0 19 22" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <mask style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="19"
+                                                  height="18">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M9.15527e-05 0H18.497V17.348H9.15527e-05V0Z" fill="white" />
+                                            </mask>
+                                            <g>
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M9.2471 1.5C5.75211 1.5 3.3161 4.238 3.3161 6.695C3.3161 8.774 2.7391 9.735 2.2291 10.583C1.8201 11.264 1.4971 11.802 1.4971 12.971C1.6641 14.857 2.90911 15.848 9.2471 15.848C15.5501 15.848 16.8341 14.813 17.0001 12.906C16.9971 11.802 16.6741 11.264 16.2651 10.583C15.7551 9.735 15.1781 8.774 15.1781 6.695C15.1781 4.238 12.7421 1.5 9.2471 1.5ZM9.2471 17.348C4.5711 17.348 0.345105 17.018 0.000104907 13.035C-0.00289509 11.387 0.500105 10.549 0.944105 9.811C1.3931 9.063 1.8161 8.358 1.8161 6.695C1.8161 3.462 4.8021 0 9.2471 0C13.6921 0 16.6781 3.462 16.6781 6.695C16.6781 8.358 17.1011 9.063 17.5501 9.811C17.9941 10.549 18.4971 11.387 18.4971 12.971C18.1481 17.018 13.9231 17.348 9.2471 17.348Z"
+                                                      fill="currentColor" />
+                                            </g>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M9.1983 21.5001H9.1963C8.0753 21.4991 7.0143 21.0051 6.2093 20.1081C5.9323 19.8011 5.9573 19.3261 6.2653 19.0501C6.5733 18.7721 7.0473 18.7971 7.3243 19.1061C7.8423 19.6831 8.5073 20.0001 9.1973 20.0001H9.1983C9.8913 20.0001 10.5593 19.6831 11.0783 19.1051C11.3563 18.7981 11.8303 18.7731 12.1373 19.0501C12.4453 19.3271 12.4703 19.8021 12.1933 20.1091C11.3853 21.0061 10.3223 21.5001 9.1983 21.5001Z"
+                                                  fill="currentColor" />
+                                        </svg>
+                                        <span class="bg-danger dots"></span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="p-0 sub-drop dropdown-menu dropdown-menu-end" aria-labelledby="notification-drop">
+                                <div class="m-0 shadow-none card">
+                                    <div class="py-3 card-header d-flex justify-content-between bg-primary mb-0">
+                                        <div class="header-title">
+                                            <h5 class="mb-0 text-white">All Notifications</h5>
+                                        </div>
+                                    </div>
+                                    <div class="p-0 card-body">
+                                        <a href="#" class="iq-sub-card">
+                                            <div class="d-flex align-items-center">
+                                                <img class="p-1 avatar-40 rounded-pill bg-primary-subtle"
+                                                     src="../assets/assets/images/shapes/01.png" loading="lazy" />
+                                                <div class="ms-3 flex-grow-1 text-start">
+                                                    <h6 class="mb-0 ">Emma Watson Bni</h6>
+                                                    <p class="mb-0">95 MB</p>
+                                                </div>
+                                                <small class="float-end font-size-12">Just Now</small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item iq-full-screen d-none d-xl-block" id="fullscreen-item">
+                            <a href="#" class="nav-link" id="btnFullscreen" data-bs-toggle="dropdown">
+                                <div class="icon nav-list-icon">
+                                         <span class="btn-inner">
+                                            <svg class="normal-screen icon-20" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                               <path d="M18.5528 5.99656L13.8595 10.8961" stroke="currentColor" stroke-width="1.5"
+                                                     stroke-linecap="round" stroke-linejoin="round"></path>
+                                               <path d="M14.8016 5.97618L18.5524 5.99629L18.5176 9.96906" stroke="currentColor"
+                                                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                               <path d="M5.8574 18.896L10.5507 13.9964" stroke="currentColor" stroke-width="1.5"
+                                                     stroke-linecap="round" stroke-linejoin="round"></path>
+                                               <path d="M9.60852 18.9164L5.85775 18.8963L5.89258 14.9235" stroke="currentColor"
+                                                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                            <svg class="full-normal-screen d-none icon-20" width="24" height="24" viewBox="0 0 24 24"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                               <path d="M13.7542 10.1932L18.1867 5.79319" stroke="currentColor" stroke-width="1.5"
+                                                     stroke-linecap="round" stroke-linejoin="round"></path>
+                                               <path d="M17.2976 10.212L13.7547 10.1934L13.7871 6.62518" stroke="currentColor"
+                                                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                               <path d="M10.4224 13.5726L5.82149 18.1398" stroke="currentColor" stroke-width="1.5"
+                                                     stroke-linecap="round" stroke-linejoin="round"></path>
+                                               <path d="M6.74391 13.5535L10.4209 13.5723L10.3867 17.2755" stroke="currentColor"
+                                                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                         </span>
+                                </div>
+                        </a>
+                    </li>
+                        <li class="nav-item dropdown" id="itemdropdown1">
+                            <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="icon-40">
+                                         <span class="btn-inner d-inline-block position-relative">
+                                            <img src="../assets/assets/images/avatars/14.png"
+                                                 class="img-fluid rounded-circle object-fit-cover" alt="icon">
+                                            <span
+                                                    class="bg-success p-1 rounded-circle position-absolute end-0 bottom-0 border border-3 border-white"></span>
+                                         </span>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="./app/user-profile.html">Profile</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="./app/user-privacy-setting.html">Privacy Setting</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="./auth/sign-in.html">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                </ul>
+                </div>
+            </div>
+        </nav>            <!--Nav End-->
+    </div>
+    <div class="content-inner container-fluid pb-0" id="page_layout">
+
+        <div class="d-flex align-items-center mb-4 mb-4 pb-3 pt-3">
+            <svg class="icon-18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                        d="M9.15722 20.7714V17.7047C9.1572 16.9246 9.79312 16.2908 10.581 16.2856H13.4671C14.2587 16.2856 14.9005 16.9209 14.9005 17.7047V17.7047V20.7809C14.9003 21.4432 15.4343 21.9845 16.103 22H18.0271C19.9451 22 21.5 20.4607 21.5 18.5618V18.5618V9.83784C21.4898 9.09083 21.1355 8.38935 20.538 7.93303L13.9577 2.6853C12.8049 1.77157 11.1662 1.77157 10.0134 2.6853L3.46203 7.94256C2.86226 8.39702 2.50739 9.09967 2.5 9.84736V18.5618C2.5 20.4607 4.05488 22 5.97291 22H7.89696C8.58235 22 9.13797 21.4499 9.13797 20.7714V20.7714"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <svg class="mx-1 icon-18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+            </svg>
+            <span class="head-title fw-500 mt-1">Business Reports - Admin</span>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay d-flex justify-content-center align-items-center" onclick="this.style.display='none';" style="cursor: pointer; display: none;">
+            <div class="text-center">
+                <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <h5>Đang tải báo cáo...</h5>
+                <small class="text-muted">Click để ẩn nếu đã tải xong</small>
+            </div>
+        </div>
+
+            <!-- Page Header -->
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <div>
+                    <h2 class="mb-0">Báo Cáo Kinh Doanh</h2>
+                    <p class="text-muted mb-0">Tổng quan và phân tích hiệu suất kinh doanh</p>
+                </div>
+                <div class="d-flex export-buttons">
+                    <button class="btn btn-outline-primary" onclick="reportManager.exportReport('pdf')">
+                        <i class="fas fa-file-pdf me-2"></i>Xuất PDF
+                    </button>
+                    <button class="btn btn-outline-success" onclick="reportManager.exportReport('excel')">
+                        <i class="fas fa-file-excel me-2"></i>Xuất Excel
+                    </button>
+                    <button class="btn btn-primary" onclick="reportManager.refreshReports()">
+                        <i class="fas fa-sync-alt me-2"></i>Làm Mới
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <h5 class="mb-3"><i class="fas fa-filter me-2"></i>Bộ Lọc Báo Cáo</h5>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="startDate" class="form-label">Từ Ngày</label>
+                        <input type="date" class="form-control" id="startDate">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="endDate" class="form-label">Đến Ngày</label>
+                        <input type="date" class="form-control" id="endDate">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="yearSelect" class="form-label">Năm</label>
+                        <select class="form-select" id="yearSelect">
+                            <option value="">Chọn năm</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button class="btn btn-light me-2 w-100" onclick="reportManager.applyFilters()">
+                            <i class="fas fa-search me-2"></i>Áp Dụng
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Overview -->
+            <div class="row mb-4">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Tổng Doanh Thu</h6>
+                                    <h3 class="mb-0" id="totalRevenue">₫0</h3>
+                                    <small class="text-success" id="revenueGrowth">+0%</small>
+                                </div>
+                                <div class="metric-icon bg-primary text-white">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Tổng Hóa Đơn</h6>
+                                    <h3 class="mb-0" id="totalInvoices">0</h3>
+                                    <small class="text-info" id="invoiceGrowth">+0%</small>
+                                </div>
+                                <div class="metric-icon bg-info text-white">
+                                    <i class="fas fa-file-invoice"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Tổng Bệnh Nhân</h6>
+                                    <h3 class="mb-0" id="totalPatients">0</h3>
+                                    <small class="text-success" id="patientGrowth">+0%</small>
+                                </div>
+                                <div class="metric-icon bg-success text-white">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Tỷ Lệ Hoàn Thành</h6>
+                                    <h3 class="mb-0" id="completionRate">0%</h3>
+                                    <small class="text-warning" id="completionTrend">0%</small>
+                                </div>
+                                <div class="metric-icon bg-warning text-white">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="row mb-4">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Xu Hướng Doanh Thu Theo Tháng</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Hiệu Suất Khoa</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="departmentChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Analysis -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="table-container">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">Top Dịch Vụ Theo Doanh Thu</h5>
+                            <button class="btn btn-sm btn-outline-primary" onclick="reportManager.toggleServiceDetail()">
+                                <i class="fas fa-eye me-1"></i>Chi Tiết
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="servicesTable" class="table table-striped table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Tên Dịch Vụ</th>
+                                        <th>Giá Dịch Vụ</th>
+                                        <th>Số Lượng</th>
+                                        <th>Doanh Thu</th>
+                                        <th>% Tổng Doanh Thu</th>
+                                        <th>Doanh Thu TB</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="servicesTableBody">
+                                    <!-- Data will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctor Performance -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="table-container">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">Hiệu Suất Bác Sĩ</h5>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-primary" onclick="reportManager.sortDoctors('appointments')">
+                                    <i class="fas fa-sort-amount-down me-1"></i>Theo Lịch Hẹn
+                                </button>
+                                <button class="btn btn-sm btn-outline-success" onclick="reportManager.sortDoctors('completion')">
+                                    <i class="fas fa-percentage me-1"></i>Theo Tỷ Lệ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="doctorsTable" class="table table-striped table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Tên Bác Sĩ</th>
+                                        <th>Khoa</th>
+                                        <th>Tổng Lịch Hẹn</th>
+                                        <th>Hoàn Thành</th>
+                                        <th>Hủy Bỏ</th>
+                                        <th>Tỷ Lệ Thành Công</th>
+                                        <th>Bệnh Nhân Duy Nhất</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="doctorsTableBody">
+                                    <!-- Data will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medicine Inventory -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="table-container">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">Tình Trạng Kho Thuốc</h5>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-danger" onclick="reportManager.filterMedicines('critical')">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>Nguy Hiểm
+                                </button>
+                                <button class="btn btn-sm btn-warning" onclick="reportManager.filterMedicines('expiring')">
+                                    <i class="fas fa-clock me-1"></i>Sắp Hết Hạn
+                                </button>
+                                <button class="btn btn-sm btn-info" onclick="reportManager.filterMedicines('all')">
+                                    <i class="fas fa-list me-1"></i>Tất Cả
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="medicinesTable" class="table table-striped table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Tên Thuốc</th>
+                                        <th>Danh Mục</th>
+                                        <th>Tồn Kho</th>
+                                        <th>Trạng Thái Kho</th>
+                                        <th>Giá</th>
+                                        <th>Ngày Hết Hạn</th>
+                                        <th>Trạng Thái Hạn</th>
+                                        <th>Còn Lại (Ngày)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="medicinesTableBody">
+                                    <!-- Data will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department Performance Detail -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-container">
+                        <h5 class="mb-3">Chi Tiết Hiệu Suất Theo Khoa</h5>
+                        <div id="departmentDetails">
+                            <!-- Department cards will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<!-- Settings sidebar start here -->
+<div class="offcanvas offcanvas-end live-customizer on-rtl-end" tabindex="-1" id="live-customizer"
+     data-bs-scroll="true" data-bs-backdrop="false" aria-labelledby="live-customizer-label" aria-modal="true"
+     role="dialog">
+    <div class="offcanvas-header gap-3">
+        <div class="d-flex align-items-center">
+            <h5 class="offcanvas-title text-dark" id="live-customizer-label">Customizer</h5>
+        </div>
+        <div class="d-flex gap-1 align-items-center">
+            <button class="btn btn-icon text-primary btn-soft-primary rounded-pill btn-sm" data-reset="settings"
+                    data-bs-toggle="tooltip" data-bs-placement="left" aria-label="Reset All Settings"
+                    data-bs-original-title="Reset All Settings">
+                <span class="btn-inner">
+                   <svg class="icon-18" width="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                              d="M21.4799 12.2424C21.7557 12.2326 21.9886 12.4482 21.9852 12.7241C21.9595 14.8075 21.2975 16.8392 20.0799 18.5506C18.7652 20.3986 16.8748 21.7718 14.6964 22.4612C12.518 23.1505 10.1711 23.1183 8.01299 22.3694C5.85488 21.6205 4.00382 20.196 2.74167 18.3126C1.47952 16.4293 0.875433 14.1905 1.02139 11.937C1.16734 9.68346 2.05534 7.53876 3.55018 5.82945C5.04501 4.12014 7.06478 2.93987 9.30193 2.46835C11.5391 1.99683 13.8711 2.2599 15.9428 3.2175L16.7558 1.91838C16.9822 1.55679 17.5282 1.62643 17.6565 2.03324L18.8635 5.85986C18.945 6.11851 18.8055 6.39505 18.549 6.48314L14.6564 7.82007C14.2314 7.96603 13.8445 7.52091 14.0483 7.12042L14.6828 5.87345C13.1977 5.18699 11.526 4.9984 9.92231 5.33642C8.31859 5.67443 6.8707 6.52052 5.79911 7.74586C4.72753 8.97119 4.09095 10.5086 3.98633 12.1241C3.8817 13.7395 4.31474 15.3445 5.21953 16.6945C6.12431 18.0446 7.45126 19.0658 8.99832 19.6027C10.5454 20.1395 12.2278 20.1626 13.7894 19.6684C15.351 19.1743 16.7062 18.1899 17.6486 16.8652C18.4937 15.6773 18.9654 14.2742 19.0113 12.8307C19.0201 12.5545 19.2341 12.3223 19.5103 12.3125L21.4799 12.2424Z"
+                              fill="currentColor" />
+                      <path
+                              d="M20.0941 18.5594C21.3117 16.848 21.9736 14.8163 21.9993 12.7329C22.0027 12.4569 21.7699 12.2413 21.4941 12.2512L19.5244 12.3213C19.2482 12.3311 19.0342 12.5633 19.0254 12.8395C18.9796 14.283 18.5078 15.6861 17.6628 16.8739C16.7203 18.1986 15.3651 19.183 13.8035 19.6772C12.2419 20.1714 10.5595 20.1483 9.01246 19.6114C7.4654 19.0746 6.13845 18.0534 5.23367 16.7033C4.66562 15.8557 4.28352 14.9076 4.10367 13.9196C4.00935 18.0934 6.49194 21.37 10.008 22.6416C10.697 22.8908 11.4336 22.9852 12.1652 22.9465C13.075 22.8983 13.8508 22.742 14.7105 22.4699C16.8889 21.7805 18.7794 20.4073 20.0941 18.5594Z"
+                              fill="currentColor" />
+                   </svg>
+                </span>
+            </button>
+            <button type="button" class="btn-close px-0 text-reset shadow-none" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+        </div>
+    </div>
+    <div class="offcanvas-body pt-0">
+        <div class="modes row row-cols-2 gx-2">
+            <div class="col">
+                <div data-setting="attribute" class="text-center w-100">
+                    <input type="radio" value="ltr" class="btn-check" name="theme_scheme_direction" data-prop="dir"
+                           id="theme-scheme-direction-ltr" checked>
+                    <label class="btn btn-border d-block" for="theme-scheme-direction-ltr">
+                        LTR
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div data-setting="attribute" class="text-center w-100">
+                    <input type="radio" value="rtl" class="btn-check" name="theme_scheme_direction" data-prop="dir"
+                           id="theme-scheme-direction-rtl">
+                    <label class="btn btn-border d-block" for="theme-scheme-direction-rtl">
+                        RTL
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="modes mt-3">
+            <div class="color-customizer mb-3">
+                <h6 class="mb-0 d-inline-block">Color Customizer</h6>
+                <p>Choose your Primary and Secondary colors.</p>
+            </div>
+            <div class="row row-cols-2 gx-2">
+                <div class="col mb-3">
+                    <div class="text-center">
+                        <input type="radio" value="default" class="btn-check" name="theme_color" id="default"
+                               checked="checked">
+                        <label class="btn bg-transparent border-0 d-block color-primary" for="default"
+                               data-bs-toggle="tooltip" data-bs-placement="top" title="Default" data-bs-original-title="Default">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="16" fill="#3a57e8"></circle>
+                            </svg>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modes">
+            <div class="color-customizer mb-3">
+                <h6 class="mb-0 d-inline-block">Theme Appearance</h6>
+                <p>Choose Light or Dark Scheme.</p>
+            </div>
+            <div class="d-grid gap-3 grid-cols-3 mb-4">
+                <div data-setting="radio">
+                    <input type="radio" value="auto" class="btn-check" name="theme_scheme" id="color-mode-auto">
+                    <label class="btn btn-border d-block" for="color-mode-auto" data-bs-toggle="tooltip"
+                           data-bs-placement="top" title="Automatic" data-bs-original-title="Automatic">
+                        <span class="text-dark">Auto</span>
+                    </label>
+                </div>
+                <div data-setting="radio">
+                    <input type="radio" value="dark" class="btn-check" name="theme_scheme" id="color-mode-dark">
+                    <label class="btn btn-border d-block" for="color-mode-dark" data-bs-toggle="tooltip"
+                           data-bs-placement="top" title="Dark" data-bs-original-title="Dark">
+                        <span class="text-dark">Dark</span>
+                    </label>
+                </div>
+                <div data-setting="radio">
+                    <input type="radio" value="light" class="btn-check" name="theme_scheme" id="color-mode-light" checked>
+                    <label class="btn btn-border d-block" for="color-mode-light" data-bs-toggle="tooltip"
+                           data-bs-placement="top" title="Light" data-bs-original-title="Light">
+                        <span class="text-dark">Light</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Settings sidebar end here -->
+
+<a class="btn btn-fixed-end btn-warning btn-icon btn-setting" id="settingbutton" data-bs-toggle="offcanvas"
+   data-bs-target="#live-customizer" role="button" aria-controls="live-customizer">
+    <svg class="icon-24 animated-rotate" width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M20.8064 7.62361L20.184 6.54352C19.6574 5.6296 18.4905 5.31432 17.5753 5.83872V5.83872C17.1397 6.09534 16.6198 6.16815 16.1305 6.04109C15.6411 5.91402 15.2224 5.59752 14.9666 5.16137C14.8021 4.88415 14.7137 4.56839 14.7103 4.24604V4.24604C14.7251 3.72922 14.5302 3.2284 14.1698 2.85767C13.8094 2.48694 13.3143 2.27786 12.7973 2.27808H11.5433C11.0367 2.27807 10.5511 2.47991 10.1938 2.83895C9.83644 3.19798 9.63693 3.68459 9.63937 4.19112V4.19112C9.62435 5.23693 8.77224 6.07681 7.72632 6.0767C7.40397 6.07336 7.08821 5.98494 6.81099 5.82041V5.82041C5.89582 5.29601 4.72887 5.61129 4.20229 6.52522L3.5341 7.62361C3.00817 8.53639 3.31916 9.70261 4.22975 10.2323V10.2323C4.82166 10.574 5.18629 11.2056 5.18629 11.8891C5.18629 12.5725 4.82166 13.2041 4.22975 13.5458V13.5458C3.32031 14.0719 3.00898 15.2353 3.5341 16.1454V16.1454L4.16568 17.2346C4.4124 17.6798 4.82636 18.0083 5.31595 18.1474C5.80554 18.2866 6.3304 18.2249 6.77438 17.976V17.976C7.21084 17.7213 7.73094 17.6516 8.2191 17.7822C8.70725 17.9128 9.12299 18.233 9.37392 18.6717C9.53845 18.9489 9.62686 19.2646 9.63021 19.587V19.587C9.63021 20.6435 10.4867 21.5 11.5433 21.5H12.7973C13.8502 21.5001 14.7053 20.6491 14.7103 19.5962V19.5962C14.7079 19.088 14.9086 18.6 15.2679 18.2407C15.6272 17.8814 16.1152 17.6807 16.6233 17.6831C16.9449 17.6917 17.2594 17.7798 17.5387 17.9394V17.9394C18.4515 18.4653 19.6177 18.1544 20.1474 17.2438V17.2438L20.8064 16.1454C21.0615 15.7075 21.1315 15.186 21.001 14.6964C20.8704 14.2067 20.55 13.7894 20.1108 13.5367V13.5367C19.6715 13.284 19.3511 12.8666 19.2206 12.3769C19.09 11.8873 19.16 11.3658 19.4151 10.928C19.581 10.6383 19.8211 10.3982 20.1108 10.2323V10.2323C21.0159 9.70289 21.3262 8.54349 20.8064 7.63277V7.63277V7.62361Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <circle cx="12.1747" cy="11.8891" r="2.63616" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round"></circle>
+    </svg>
+</a>        <!-- Live Customizer end -->
+<!-- Wrapper End-->
+
+
+<!-- Library Bundle Script -->
+    <script src="../assets/assets/js/core/libs.min.js"></script>
+<!-- Plugin Scripts -->
+<!-- Tour plugin Start -->
+<script src="../assets/assets/vendor/sheperd/dist/js/sheperd.min.js"></script>
+<script src="../assets/assets/js/plugins/tour.js" defer></script>
+
+<!-- Flatpickr Script -->
+<script src="../assets/assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
+<script src="../assets/assets/js/plugins/flatpickr.js" defer></script>
+
+<!-- Slider-tab Script -->
+<script src="../assets/assets/js/plugins/slider-tabs.js"></script>
+
+<!-- fslightbox Script -->
+<script src="../assets/assets/js/plugins/fslightbox.js" defer></script>
+
+<!-- Sweet-alert Script -->
+<script src="../assets/assets/vendor/sweetalert2/dist/sweetalert2.min.js" async></script>
+<script src="../assets/assets/js/plugins/sweet-alert.js" defer></script>
+
+<!-- Select2 Script -->
+<script src="../assets/assets/js/plugins/select2.js" defer></script>
+
+<!-- Lodash Utility -->
+<script src="../assets/assets/vendor/lodash/lodash.min.js"></script>
+<!-- Utilities Functions -->
+<script src="../assets/assets/js/iqonic-script/utility.min.js"></script>
+<!-- Settings Script -->
+<script src="../assets/assets/js/iqonic-script/setting.min.js"></script>
+<!-- Settings Init Script -->
+<script src="../assets/assets/js/setting-init.js"></script>
+<!-- External Library Bundle Script -->
+    <script src="../assets/assets/js/core/external.min.js"></script>
+<!-- Widgetchart Script -->
+<script src="../assets/assets/js/charts/widgetcharts.js?v=1.4.1" defer></script>
+<!-- Dashboard Script -->
+<script src="../assets/assets/js/charts/dashboard.js?v=1.4.1" defer></script>
+<!-- Hopeui Script -->
+<script src="../assets/assets/js/kivicare.js?v=1.4.1" defer></script>
+<script src="../assets/assets/js/kivicare-advance.js?v=1.4.1" defer></script>
+<script src="../assets/assets/js/sidebar.js?v=1.4.1" defer></script>
+
+<!-- Icons -->
+<script src="../assets/assets/js/solid-icon-search-filter.js?v=1.4.1" defer></script>
+    
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    
+    <!-- Custom Report Script -->
+    <script src="../assets/jslogic/business-reports.js"></script>
+</body>
+</html> 
